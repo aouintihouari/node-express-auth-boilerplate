@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Environment variables (TRES IMPORTANT)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Optional: Editors settings
+.vscode/
+.idea/
+
+# Coverage directory used by testing tools
+coverage/
+
+# Build directory (if you use a build step later)
+dist/
+build/
