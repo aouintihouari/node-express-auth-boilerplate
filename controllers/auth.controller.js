@@ -30,6 +30,7 @@ export const signup = catchAsync(async (req, res, next) => {
   const verificationToken = user.createEmailVerificationToken();
 
   await user.save({ validateBeforeSave: false });
+  user.password = undefined;
 
   try {
     const message = `Welcome! Here's your token to verify your email (valid for 10 minutes): \n\n${verificationToken}`;

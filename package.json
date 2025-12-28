@@ -4,8 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --watch server.js"
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --verbose --runInBand"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "transform": {},
+    "testTimeout": 30000
   },
   "keywords": [],
   "author": "",
@@ -31,5 +37,10 @@
     "streamifier": "^0.1.1",
     "unique-names-generator": "^4.7.1",
     "zod": "^4.2.1"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4"
   }
 }

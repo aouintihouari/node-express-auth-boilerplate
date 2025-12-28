@@ -6,6 +6,7 @@
 ![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white)
 ![Zod](https://img.shields.io/badge/Zod-3068B7?style=for-the-badge&logo=zod&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
 
 A robust, secure, and scalable **Authentication API** starter kit built with Node.js, Express, and Mongoose.
 Designed with **Clean Architecture** principles and industry best practices in mind.
@@ -33,6 +34,12 @@ Designed with **Clean Architecture** principles and industry best practices in m
 - **Email Features**: Welcome emails, Password Reset tokens, Email Verification.
 - **User Management**: Update profile, "Soft" delete account, Upload profile picture.
 - **Image Processing**: Image upload handling with Multer, resizing with Sharp, and storage on Cloudinary.
+
+### ✅ Testing & QA
+
+- **Full Integration Tests**: Complete coverage of the authentication flow using Jest & Supertest.
+- **Isolated Environment**: Tests run on a separate MongoDB database to prevent data corruption.
+- **Mocking**: Email services are mocked to ensure fast and cost-free testing.
 
 ## 📂 Project Structure
 
@@ -112,6 +119,35 @@ npm start
 | **PATCH**  | `/api/v1/auth/updateMyPassword`     |    🔐     | Update password                  |
 | **PATCH**  | `/api/v1/users/updateMe`            |    🔐     | Update profile (Name, Photo)     |
 | **DELETE** | `/api/v1/users/deleteMe`            |    🔐     | Soft delete account              |
+
+## 🧪 Running Tests
+
+This project includes a comprehensive suite of integration tests covering Signup, Login, Password Reset flows, and Security features.
+
+**1. Configure Test Database**
+Ensure your `.env` file contains a connection string. The tests will automatically replace the database name with a test version (e.g., `.../MyApp_TEST`).
+
+**2. Run Tests**
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode (for development)
+npm run test:watch
+```
+
+### What is tested?
+
+✅ User Registration (with password hashing check)
+
+✅ Login (HttpOnly Cookie generation)
+
+✅ Protected Routes (Middleware validation)
+
+✅ Password Reset Flow (Forgot password, Reset with token)
+
+✅ Input Validation (Zod error handling)
 
 ## 🤝 Contributing
 
