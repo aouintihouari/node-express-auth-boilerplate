@@ -11,8 +11,8 @@ import authRouter from "./routes/auth.route.js";
 import userRouter from "./routes/user.route.js";
 import globalErrorHandler from "./controllers/error.controller.js";
 
+const allowedOrigins = [process.env.FRONTEND_URL, "http://localhost:3000"];
 const app = express();
-const NODE_ENV = process.env.NODE_ENV;
 
 const limiter = rateLimit({
   max: 100,
@@ -22,8 +22,13 @@ const limiter = rateLimit({
 
 app.use(helmet());
 app.use("/api", limiter);
-if (NODE_ENV === "development") app.use(morgan("dev"));
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    credentials: true,
+  })
+);
 app.use(express.json({ limit: "10kb" }));
 app.use(cookieParser());
 app.use(mongoSanitize());
